@@ -2,34 +2,45 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border/40 bg-background">
-      <div className="container flex max-w-screen-2xl flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0">
-        <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
-          <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-            © {new Date().getFullYear()} 我的博客。All rights reserved.
-          </p>
-        </div>
-        <div className="flex items-center gap-4">
-          <Link
-            href="/about"
-            className="text-sm text-muted-foreground hover:text-foreground"
-          >
-            关于
-          </Link>
-          <Link
-            href="/feed.xml"
-            className="text-sm text-muted-foreground hover:text-foreground"
-          >
-            RSS
-          </Link>
-          <a
-            href="https://github.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-muted-foreground hover:text-foreground"
-          >
-            GitHub
-          </a>
+    <footer className="w-full border-t" style={{ borderColor: 'var(--border)', background: 'var(--background)' }}>
+      <div className="container">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 py-8">
+          {/* Copyright */}
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <p className="text-sm" style={{ color: 'var(--foreground-muted)' }}>
+              © {new Date().getFullYear()} 我的博客。All rights reserved.
+            </p>
+            <p className="text-xs" style={{ color: 'var(--foreground-muted)' }}>
+              用 Next.js 和 Tailwind CSS 构建
+            </p>
+          </div>
+
+          {/* Links */}
+          <nav className="flex items-center gap-6">
+            <Link
+              href="/about"
+              className="text-sm font-medium hover:text-[var(--accent)] transition-colors"
+              style={{ color: 'var(--foreground-muted)' }}
+            >
+              关于
+            </Link>
+            <Link
+              href="/feed.xml"
+              className="text-sm font-medium hover:text-[var(--accent)] transition-colors"
+              style={{ color: 'var(--foreground-muted)' }}
+            >
+              RSS
+            </Link>
+            <a
+              href="https://github.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium hover:text-[var(--accent)] transition-colors"
+              style={{ color: 'var(--foreground-muted)' }}
+            >
+              GitHub
+            </a>
+          </nav>
         </div>
       </div>
     </footer>

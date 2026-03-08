@@ -11,44 +11,163 @@ interface PostContentProps {
 
 export default function PostContent({ content }: PostContentProps) {
   return (
-    <div className="prose prose-zinc dark:prose-invert max-w-none">
+    <div className="post-content" style={{ 
+      fontSize: '1rem',
+      lineHeight: '1.7',
+      color: 'var(--foreground)'
+    }}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeHighlight]}
         components={{
           h1: ({ node, ...props }) => (
-            <h1 className="text-4xl font-bold tracking-tight mb-4" {...props} />
+            <h1 
+              className="" 
+              style={{ 
+                fontSize: '2.5rem',
+                fontWeight: 600,
+                marginTop: 0,
+                marginBottom: '1.5rem',
+                color: 'var(--foreground)'
+              }} 
+              {...props} 
+            />
           ),
           h2: ({ node, ...props }) => (
-            <h2 className="text-2xl font-semibold tracking-tight mt-8 mb-4" {...props} />
+            <h2 
+              className=""
+              style={{ 
+                fontSize: '2rem',
+                fontWeight: 600,
+                marginTop: '2.5rem',
+                marginBottom: '1rem',
+                color: 'var(--foreground)'
+              }} 
+              {...props} 
+            />
           ),
           h3: ({ node, ...props }) => (
-            <h3 className="text-xl font-semibold mt-6 mb-3" {...props} />
+            <h3 
+              className=""
+              style={{ 
+                fontSize: '1.5rem',
+                fontWeight: 600,
+                marginTop: '2rem',
+                marginBottom: '0.75rem',
+                color: 'var(--foreground)'
+              }} 
+              {...props} 
+            />
+          ),
+          h4: ({ node, ...props }) => (
+            <h4 
+              className=""
+              style={{ 
+                fontSize: '1.25rem',
+                fontWeight: 600,
+                marginTop: '1.5rem',
+                marginBottom: '0.5rem',
+                color: 'var(--foreground)'
+              }} 
+              {...props} 
+            />
           ),
           p: ({ node, ...props }) => (
-            <p className="leading-7 mb-4" {...props} />
+            <p 
+              className=""
+              style={{ 
+                fontSize: '1rem',
+                lineHeight: '1.7',
+                marginBottom: '1.25rem'
+              }} 
+              {...props} 
+            />
           ),
           a: ({ node, ...props }) => (
             <a
-              className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+              className=""
+              style={{ 
+                color: 'var(--accent)',
+                textDecoration: 'none',
+                transition: 'color 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--accent-hover)';
+                e.currentTarget.style.textDecoration = 'underline';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'var(--accent)';
+                e.currentTarget.style.textDecoration = 'none';
+              }}
               {...props}
             />
           ),
+          strong: ({ node, ...props }) => (
+            <strong 
+              className=""
+              style={{ fontWeight: 600 }}
+              {...props} 
+            />
+          ),
+          em: ({ node, ...props }) => (
+            <em className="" {...props} />
+          ),
           blockquote: ({ node, ...props }) => (
-            <blockquote className="border-l-2 border-primary pl-6 italic my-4" {...props} />
+            <blockquote 
+              className=""
+              style={{ 
+                borderLeft: '3px solid var(--accent)',
+                paddingLeft: '1.25rem',
+                margin: '1.5rem 0',
+                color: 'var(--foreground-muted)',
+                fontStyle: 'italic'
+              }} 
+              {...props} 
+            />
           ),
           ul: ({ node, ...props }) => (
-            <ul className="my-4 ml-6 list-disc" {...props} />
+            <ul 
+              className=""
+              style={{ 
+                margin: '1rem 0',
+                paddingLeft: '1.5rem',
+                lineHeight: '1.7'
+              }} 
+              {...props} 
+            />
           ),
           ol: ({ node, ...props }) => (
-            <ol className="my-4 ml-6 list-decimal" {...props} />
+            <ol 
+              className=""
+              style={{ 
+                margin: '1rem 0',
+                paddingLeft: '1.5rem',
+                lineHeight: '1.7'
+              }} 
+              {...props} 
+            />
           ),
           li: ({ node, ...props }) => (
-            <li className="mb-2" {...props} />
+            <li 
+              className=""
+              style={{ marginBottom: '0.5rem' }}
+              {...props} 
+            />
           ),
           code: ({ node, inline, className, children, ...props }: any) => (
             inline ? (
-              <code className="bg-muted px-1.5 py-0.5 rounded text-sm" {...props}>
+              <code 
+                className=""
+                style={{ 
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.875em',
+                  backgroundColor: 'var(--code-bg)',
+                  color: 'var(--code-foreground)',
+                  padding: '0.2em 0.4em',
+                  borderRadius: '4px'
+                }} 
+                {...props}
+              >
                 {children}
               </code>
             ) : (
@@ -58,21 +177,83 @@ export default function PostContent({ content }: PostContentProps) {
             )
           ),
           pre: ({ node, ...props }) => (
-            <pre className="overflow-x-auto rounded-lg bg-zinc-900 p-4 my-4" {...props} />
+            <pre 
+              className=""
+              style={{ 
+                backgroundColor: 'var(--code-bg)',
+                color: 'var(--code-foreground)',
+                padding: '1.25rem',
+                borderRadius: '8px',
+                overflowX: 'auto',
+                margin: '1.5rem 0',
+                lineHeight: '1.6'
+              }} 
+              {...props} 
+            />
           ),
           img: ({ node, ...props }) => (
-            <img className="rounded-lg my-4" {...props} />
+            <img 
+              className=""
+              style={{ 
+                maxWidth: '100%',
+                height: 'auto',
+                borderRadius: '8px',
+                margin: '1.5rem 0'
+              }} 
+              {...props} 
+            />
           ),
           table: ({ node, ...props }) => (
-            <div className="my-6 w-full overflow-y-auto">
-              <table className="w-full" {...props} />
+            <div 
+              className=""
+              style={{ 
+                margin: '1.5rem 0',
+                overflowX: 'auto'
+              }}
+            >
+              <table 
+                className=""
+                style={{ 
+                  width: '100%',
+                  borderCollapse: 'collapse'
+                }} 
+                {...props} 
+              />
             </div>
           ),
           th: ({ node, ...props }) => (
-            <th className="border px-4 py-2 text-left font-semibold" {...props} />
+            <th 
+              className=""
+              style={{ 
+                border: '1px solid var(--border)',
+                padding: '0.75rem 1rem',
+                textAlign: 'left',
+                fontWeight: 600,
+                backgroundColor: 'var(--background-alt)'
+              }} 
+              {...props} 
+            />
           ),
           td: ({ node, ...props }) => (
-            <td className="border px-4 py-2" {...props} />
+            <td 
+              className=""
+              style={{ 
+                border: '1px solid var(--border)',
+                padding: '0.75rem 1rem'
+              }} 
+              {...props} 
+            />
+          ),
+          hr: ({ node, ...props }) => (
+            <hr 
+              className=""
+              style={{ 
+                border: 'none',
+                borderTop: '1px solid var(--border)',
+                margin: '2rem 0'
+              }} 
+              {...props} 
+            />
           ),
         }}
       >
